@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for shopList in shopLists %}
+        <div class="shopList">
+            <div class="date">
+                {{ shopLists.created_date }}
+				{{ shopLists.lastmaj_date }}
+            </div>
+            <h1><a href="{% url 'shopList_detail' pk=post.pk %}">{{ shopList.name }}</a></h1>
+            <p>{{ shopList.peopleGroup|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}

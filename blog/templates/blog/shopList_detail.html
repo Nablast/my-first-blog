@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="shopList">
+		<div class="date">
+			Date de création : {{ shopList.lastmaj_date }}
+		</div>
+
+		<h1>{{ shopList.name }}</h1>
+		
+		A prendre :
+		{%for item in shopList.items.all %}
+			<p>{{item.object.name}}</p>
+		{% endfor %}
+		
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="userGroup">
+		{% if user.is_authenticated %}
+			<a class="btn btn-default" href="{% url 'userGroup_edit' pk=userGroup.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+		
+		<h1> Groupe : {{ userGroup.name }}</h1>
+		
+		{%for customUser in userGroup.users.all %}
+		<p> Membres du groupe :
+			{{customUser.user.username}} 
+		</p>
+		{% endfor %}
+		
+		<p> <a href="{% url 'shopList_new' pk=userGroup.pk %}"> Ajouter une liste de courses </a>
+		
+		<p> Listes de course : </p>
+		
+		{% for shopList in userGroup.shopLists.all %}
+        <div class="">
+            <h1><a href="{% url 'shopList_detail' pk1=userGroup.pk pk2=shopList.pk %}">{{ shopList.name }}</a></h1>
+        </div>
+		{% endfor %}
+    </div>
+{% endblock %}
